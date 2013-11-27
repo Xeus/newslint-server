@@ -7,6 +7,7 @@
 * [Django-Bower](https://django-bower.readthedocs.org/en/latest/)
 * [git](http://git-scm.com/)
 * [jQuery](http://jquery.com/)
+* [Grunt](http://gruntjs.com/)
 * [momentjs](http://momentjs.com/)
 * [celery](http://www.celeryproject.org/)
 * [redis](http://redis.io/)

@@ -3,3 +3,5 @@ newslint.db
 *.pyc
 components
 *.DS_Store
+node_modules
+static/build
