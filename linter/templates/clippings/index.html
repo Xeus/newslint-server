@@ -1,0 +1,17 @@
+{% include 'partials/_header.html' %}
+
+<h1>Hello!<h1>
+
+{% if clippings_list %}
+    <ul>
+    {% for clipping in clippings_list %}
+        <li><a href="/clippings/{{ clipping.id }}/">{{ clipping.content }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No clippings are available.</p>
+{% endif %}
+
+<p>{{ result.fail_points }}</p>
+
+{% include 'partials/_footer.html' %}

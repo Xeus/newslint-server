@@ -1,0 +1,35 @@
+<h1>Enter Text for the Newslinter</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form name="form_clipping" id="" method="POST" action="{% url 'lint_clipping' %}">
+{% csrf_token %}
+
+<textarea name="content"></textarea>
+<input type="submit" value="lint this news clipping" id="form_submit" />
+
+<div class="more_div">[ <a href="#" class="more_link">show more fields</a> ]</div>
+
+<div class="hidden_fields">
+
+<label for="title">clipping title</label> <input type="text" name="title" id="title" />
+<label for="publication">publication</label>
+<select name="publication" id="publication">
+{% for k, v in PUBLICATIONS %}
+<option name="{{k}}">{{v}}</option>
+{% endfor %}
+</select>
+
+<label for="author">author</label> <input type="text" name="author" id="author" />
+
+<label for="url">url</label> <input type="text" name="url" id="url" />
+
+<label for="published">published</label> <input type="date" name="published" id="published" />
+
+<input type="checkbox" name="public" /> get permanent link? (note: this saves any input to the db)
+
+</div>
+
+<input type="submit" value="lint this news clipping" id="form_submit" />
+
+</form>
