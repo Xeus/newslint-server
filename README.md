@@ -27,4 +27,6 @@
 ## TODO
 
 * configure static files
-* unit tests* logging
+* unit tests
+* logging
+* make safe default `settings.py`
