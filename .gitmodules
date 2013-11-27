@@ -1,0 +1,5 @@
+
+[submodule "linter/lib/newslint"]
+    path = linter/lib/newslint
+    url = https://github.com/Xeus/newslint.git
+    ignore = dirty
