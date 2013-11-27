@@ -19,6 +19,7 @@
     npm install -g bower
     sudo pip install -r requirements.txt
     python manage.py bower_install
+    grunt default
     python manage.py migrate
 
 ## Start Server
