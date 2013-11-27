@@ -2,6 +2,7 @@
 
 ## Stuff Used
 
+* [Python](http://www.python.org/)
 * [Django](https://www.djangoproject.com/)
 * [Bower](https://github.com/bower/bower)
 * [Django-Bower](https://django-bower.readthedocs.org/en/latest/)
@@ -15,8 +16,14 @@
 
 ## Install
 
-    git clone git@github.com:Xeus/newslint-server.git
+You might need these installed:
+
+    curl https://npmjs.org/install.sh | sh
     npm install -g bower
+
+Set up repo:
+
+    git clone git@github.com:Xeus/newslint-server.git
     sudo pip install -r requirements.txt
     python manage.py bower_install
     npm install
