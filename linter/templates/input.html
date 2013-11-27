@@ -2,7 +2,7 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form name="form_clipping" id="" method="POST" action="{% url 'lint_clipping' %}">
+<form name="form_clipping" id="form_clipping" method="POST" action="{% url 'lint_clipping' %}">
 {% csrf_token %}
 
 <textarea name="content"></textarea>
@@ -12,21 +12,33 @@
 
 <div class="hidden_fields">
 
-<label for="title">clipping title</label> <input type="text" name="title" id="title" />
-<label for="publication">publication</label>
-<select name="publication" id="publication">
-{% for k, v in PUBLICATIONS %}
-<option name="{{k}}">{{v}}</option>
-{% endfor %}
-</select>
+<div class="div_name">
+    <label for="title">clipping title</label> <input type="text" name="title" id="title" />
+</div>
 
-<label for="author">author</label> <input type="text" name="author" id="author" />
+<div class="div_publication">
+    <label for="publication">publication</label>
+    <select name="publication" id="publication">
+        <option value="">[none]</option>
+        {% for k, v in PUBLICATIONS %}
+        <option value="{{k}}">{{v}}</option>
+        {% endfor %}
+    </select>
+</div>
 
-<label for="url">url</label> <input type="text" name="url" id="url" />
+<div class="div_author">
+    <label for="author">author</label> <input type="text" name="author" id="author" />
+</div>
 
-<label for="published">published</label> <input type="date" name="published" id="published" />
+<div class="div_url">
+    <label for="url">url</label> <input type="text" name="url" id="url" />
+</div>
 
-<input type="checkbox" name="public" /> get permanent link? (note: this saves any input to the db)
+<div class="div_published">
+    <label for="published">published</label> <input type="date" name="published" id="published" />
+</div>
+
+<input type="checkbox" name="public" id="public" value="true" /> get permanent link? (note: this saves any input to the db)
 
 </div>
 

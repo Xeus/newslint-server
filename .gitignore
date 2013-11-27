@@ -1,3 +1,5 @@
 junk.txt
 newslint.db
 *.pyc
+components
+*.DS_Store

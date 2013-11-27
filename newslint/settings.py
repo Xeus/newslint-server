@@ -1,4 +1,5 @@
 # Django settings for newslint project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -72,6 +73,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.getcwd() + STATIC_URL,
 )
 
 # List of finder classes that know how to find static files in
@@ -79,6 +81,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -124,7 +127,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'linter'
+    'linter',
+    'djangobower',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -157,3 +161,11 @@ LOGGING = {
         },
     }
 }
+
+# Bower stuff https://github.com/nvbn/django-bower
+BOWER_COMPONENTS_ROOT = os.getcwd() + '/components/'
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'font-awesome',
+    'momentjs',
+)

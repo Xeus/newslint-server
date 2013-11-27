@@ -1,0 +1,35 @@
+{% include 'partials/_header.html' %}
+
+<h1>Results</h1>
+
+<div class="errors">
+    {% for e in errors %}
+    <div class="msg">
+        <div class="message">{{ e.message }}:</div>
+        <div class="detail">{{ e.detail}}</div>
+    </div>
+    {% endfor %}
+</div>
+<div class="warnings">
+    {% for w in warnings %}
+    <div class="msg">
+        <div class="message">{{ w.message }}:</div>
+        <div class="detail">{{ w.detail}}</div>
+    </div>
+    {% endfor %}
+</div>
+<div class="notices">
+    {% for n in notices %}
+    <div class="msg">
+        <div class="message">{{ n.message }}:</div>
+        <div class="detail">{{ n.detail}}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="content">
+    <h4>Content</h4>
+    {{ content }}
+</div>
+
+{% include 'partials/_footer.html' %}
