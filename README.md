@@ -23,6 +23,7 @@ So basically this is a testbed site to learn lots of stuff.  Hope it's useful to
 * [celery](http://www.celeryproject.org/)
 * [redis](http://redis.io/)
 * [font-awesome](http://fontawesome.io/)
+* [autoprefixer](https://github.com/ai/autoprefixer)
 
 ## Install
 

@@ -25,14 +25,33 @@ module.exports = function(grunt) {
             //         cssDir: 'css'
             //     }
             // }
+        },
+        autoprefixer: {
+            options: {
+                browsers: ['last 3 version']
+            },
+            no_dest: {
+                src: 'static/build/css/main.css'
+            }
+        },
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: 'static/build/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: 'static/build/css/',
+                ext: '.min.css'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['uglify', 'compass']);
+    grunt.registerTask('default', ['uglify', 'compass', 'autoprefixer', 'cssmin']);
 
 };
 

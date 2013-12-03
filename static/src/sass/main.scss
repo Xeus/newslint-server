@@ -1,3 +1,23 @@
+/* variables */
 $lightgray: #383838;
 
-a {color: $lightgray;}
+/* mixins */
+
+
+/* general */
+a {
+    color: $lightgray;
+    width: calc(50% - 2em);
+    display: flex;
+}
+
+/* other */
+.warnings {
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(red, blue);
+}
+
+:fullscreen a {
+    transition: transform 1s;
+}
