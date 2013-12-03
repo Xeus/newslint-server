@@ -6,7 +6,8 @@
     {% for e in errors %}
     <div class="msg">
         <div class="message">{{ e.message }}:</div>
-        <div class="detail">{{ e.detail}}</div>
+        <div class="detail">{{ e.detail }}</div>
+        <div class="evidence">{{ e.evidence }}</div>
     </div>
     {% endfor %}
 </div>
@@ -14,7 +15,8 @@
     {% for w in warnings %}
     <div class="msg">
         <div class="message">{{ w.message }}:</div>
-        <div class="detail">{{ w.detail}}</div>
+        <div class="detail">{{ w.detail }}</div>
+        <div class="evidence">{{ w.evidence }}</div>
     </div>
     {% endfor %}
 </div>
@@ -22,7 +24,8 @@
     {% for n in notices %}
     <div class="msg">
         <div class="message">{{ n.message }}:</div>
-        <div class="detail">{{ n.detail}}</div>
+        <div class="detail">{{ n.detail }}</div>
+        <div class="evidence">{{ n.evidence }}</div>
     </div>
     {% endfor %}
 </div>

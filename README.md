@@ -1,5 +1,15 @@
 # newslint-server
 
+A little project to lint a block of text to see how newsworthy, objective, sensationalist, pundit-prone, etc. it is.  It comes from my interest in reading the news and identifying political bait.  And it was enabled by the excellent joblint project originally done in JavaScript by [Rowan Manning(https://github.com/rowanmanning/joblint).
+
+I wanted to port Rowan's code to Python first, then give it a Django server backend to interface with over the web so I could learn Django.  I wanted to use Django's views and templates but also build an API so I could build it a second way with a RESTful interface, potentially using Ember.js so I could learn that too.
+
+My other goals were to write Django tests (I didn't know enough Django to try TDD since I had to learn every step as I went) and to build a solid Grunt-enabled development environment using SASS, which I'd also never used before.
+
+And if all went well, I wanted to add in celery tasks so I could scrape a URL and serve up the results later.
+
+So basically this is a testbed site to learn lots of stuff.  Hope it's useful to someone else too!
+
 ## Stuff Used
 
 * [Python](http://www.python.org/)
@@ -36,7 +46,9 @@ Set up repo:
 
 ## TODO
 
-* configure static files
 * unit tests
 * logging
 * make safe default `settings.py`
+* classify terms as warnings, errors, notices
+* celery for scraping a url
+
