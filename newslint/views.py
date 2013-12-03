@@ -56,7 +56,12 @@ def lint_clipping(request):
 
 
 def lint_result(request, data={}):
-    print(simplejson.dumps(data))
+    import pprint, copy
+    pp = pprint.PrettyPrinter(indent=2)
+    data2 = copy.copy(data)
+    data2['content'] = '[removed for brevity]'
+    pp.pprint(data2)
+    # print(simplejson.dumps(data))
     return render(request, 'result.html', data)
 
 

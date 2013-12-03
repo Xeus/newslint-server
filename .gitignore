@@ -5,3 +5,4 @@ components
 *.DS_Store
 node_modules
 static/build
+.sass-cache

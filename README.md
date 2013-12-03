@@ -1,6 +1,6 @@
 # newslint-server
 
-A little project to lint a block of text to see how newsworthy, objective, sensationalist, pundit-prone, etc. it is.  It comes from my interest in reading the news and identifying political bait.  And it was enabled by the excellent joblint project originally done in JavaScript by [Rowan Manning(https://github.com/rowanmanning/joblint).
+A little project to lint a block of text to see how newsworthy, objective, sensationalist, pundit-prone, etc. it is.  It comes from my interest in reading the news and identifying political bait.  And it was enabled by the excellent joblint project originally done in JavaScript by [Rowan Manning](https://github.com/rowanmanning/joblint).
 
 I wanted to port Rowan's code to Python first, then give it a Django server backend to interface with over the web so I could learn Django.  I wanted to use Django's views and templates but also build an API so I could build it a second way with a RESTful interface, potentially using Ember.js so I could learn that too.
 
@@ -28,8 +28,11 @@ So basically this is a testbed site to learn lots of stuff.  Hope it's useful to
 
 You might need these installed:
 
-    curl https://npmjs.org/install.sh | sh
-    npm install -g bower
+    sudo curl https://npmjs.org/install.sh | sh
+    sudo npm install -g bower
+    sudo gem update --system
+    sudo gem install compass
+    sudo gem install sass
 
 Set up repo:
 
