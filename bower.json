@@ -1,0 +1,10 @@
+{
+  "name": "newslint-server",
+  "version": "0.1.0",
+  "dependencies": {
+    "font-awesome": "*",
+    "jquery": "*",
+    "modernizr": "*",
+    "momentjs": "*"
+  }
+}

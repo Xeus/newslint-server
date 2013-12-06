@@ -165,7 +165,8 @@ LOGGING = {
 # Bower stuff https://github.com/nvbn/django-bower
 BOWER_COMPONENTS_ROOT = os.getcwd() + '/components/'
 BOWER_INSTALLED_APPS = (
-    'jquery',
     'font-awesome',
+    'jquery',
+    'modernizr',
     'momentjs',
 )

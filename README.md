@@ -24,6 +24,8 @@ So basically this is a testbed site to learn lots of stuff.  Hope it's useful to
 * [redis](http://redis.io/)
 * [font-awesome](http://fontawesome.io/)
 * [autoprefixer](https://github.com/ai/autoprefixer)
+* [SASS](http://sass-lang.com/)
+* [Compass](http://compass-style.org/)
 
 ## Install
 
@@ -41,7 +43,7 @@ Set up repo:
     sudo pip install -r requirements.txt
     python manage.py bower_install
     npm install
-    grunt default
+    grunt build
     python manage.py migrate
 
 ## Start Server

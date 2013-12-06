@@ -3,12 +3,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+            all: {
+                files: {
+                    'static/build/js/<%= pkg.name %>.min.js': ['static/src/js/<%= pkg.name %>.js']
+                }
             },
-            build: {
-                src: 'static/src/js/<%= pkg.name %>.js',
-                dest: 'static/build/js/<%= pkg.name %>.min.js'
+            modernizr: {
+                files: {
+                    'components/bower_components/modernizr/modernizr.min.js': ['components/bower_components/modernizr/modernizr.js']
+                }
             }
         },
         compass: {
@@ -51,7 +54,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['uglify', 'compass', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('build', ['uglify', 'compass', 'autoprefixer', 'cssmin']);
 
 };
 

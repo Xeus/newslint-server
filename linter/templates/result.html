@@ -1,8 +1,18 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
 {% include 'partials/_header.html' %}
+</head>
+
+<body>
 
 <h1>Results</h1>
 
 <div class="errors">
+    <h3>Errors</h3>
+    {% if errors|length == 0 %}<div class="no_messages">none found!</div>{% endif %}
     {% for e in errors %}
     <div class="msg">
         <div class="message">{{ e.message }}:</div>
@@ -12,6 +22,8 @@
     {% endfor %}
 </div>
 <div class="warnings">
+    <h3>Warnings</h3>
+    {% if warnings|length == 0 %}<div class="no_messages">none found!</div>{% endif %}
     {% for w in warnings %}
     <div class="msg">
         <div class="message">{{ w.message }}:</div>
@@ -21,6 +33,8 @@
     {% endfor %}
 </div>
 <div class="notices">
+    <h3>Notices</h3>
+    {% if notices|length == 0 %}<div class="no_messages">none found!</div>{% endif %}
     {% for n in notices %}
     <div class="msg">
         <div class="message">{{ n.message }}:</div>
@@ -36,3 +50,7 @@
 </div>
 
 {% include 'partials/_footer.html' %}
+
+</body>
+
+</html>

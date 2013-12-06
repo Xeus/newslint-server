@@ -1,14 +1,14 @@
 {
-  "name": "newslint",
+  "name": "newslint-server",
   "version": "0.1.0",
   "repository": "https://github.com/Xeus/newslint-server.git",
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-compass": "*",
+    "grunt": "*",
     "grunt-autoprefixer": "*",
-    "grunt-contrib-cssmin": "*"
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-uglify": "*"
   }
 }

@@ -1,6 +1,14 @@
-{% include 'partials/_header.html' %}
+<!DOCTYPE html>
 
-<h1>Hello!<h1>
+<html lang="en">
+
+<head>
+{% include 'partials/_header.html' %}
+</head>
+
+<body>
+
+<h1>Hello!</h1>
 
 {% if clippings_list %}
     <ul>
@@ -15,3 +23,7 @@
 <p>{{ result.fail_points }}</p>
 
 {% include 'partials/_footer.html' %}
+
+</body>
+
+</html>
