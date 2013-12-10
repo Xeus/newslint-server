@@ -44,17 +44,18 @@ Set up repo:
     python manage.py bower_install
     npm install
     grunt build
-    python manage.py migrate
+    python manage.py syncdb
 
 ## Start Server
 
     python manage.py runserver
 
+## Tests
+
+    python manage.py test linter
+
 ## TODO
 
-* unit tests
 * logging
 * make safe default `settings.py`
-* classify terms as warnings, errors, notices
 * celery for scraping a url
-

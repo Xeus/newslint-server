@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
-from datetime import datetime
+from django.utils import timezone
 
 
 PUBLICATIONS = (
@@ -23,8 +23,11 @@ class Clipping(models.Model):
     author = models.CharField(max_length=255, default='', blank=True)
     url = models.CharField(max_length=255, default='', blank=True)
     content = models.TextField(default='')
-    published = models.DateTimeField('date published', default=datetime.now(), blank=True)
-    added = models.DateTimeField('date added by user', default=datetime.now(), blank=True)
+    published = models.DateTimeField('date published', default=timezone.now(), blank=True)
+    added = models.DateTimeField('date added by user', default=timezone.now(), blank=True)
+
+    def __unicode__(self):
+        return self.title
 
 
 class ClippingForm(ModelForm):

@@ -1,8 +1,7 @@
 from linter.models import Clipping
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.http import Http404
 from linter.lib.newslint.newslint import newslint as newslint
-from django.core.urlresolvers import reverse
 
 
 def index(request):
