@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+{% include 'partials/_header.html' %}
+</head>
+
+<body>
+
+{% include 'partials/_nav.html' %}
+
+<div class="body-container">
+
+    <div class="body-left">
+
+	    <h2>About Newslint</h2>
+
+	    <p>
+	        In consumption and analysis of the news, half the battle is deciphering the intent and agenda behind the text to see if it's giving the story a fair take.  Newslint identifies <a href="http://en.wikipedia.org/wiki/Loaded_language">loaded language</a>, potential biases, punditry, partisanship, unprofessionalism, and other problems with text.  Not all of its warnings will apply (false positives, particularly), but hopefully it will make you aware of issues with the text.
+	    </p>
+
+	    <p>
+	    	There are different dimensions behind whether news is worth reading or not: which source it came from, who was quoted, phraseology, time spent on both sides, experience, etc.  This seems to be more of a skill than an art but perhaps a raw cursory linting of a news article can classify the text at first.
+	    </p>
+
+	    <p>
+	    	For me personally, curation of the news is an enjoyable task.  Picking out which stories have new data, which don't falsely present stories, which give a hard take on a subject both in objective reality and in a sense meaningful to the players involved in it -- these are the components of a healthy fascination with the news.
+	    </p>
+
+    </div>
+
+    <div class="body-right">
+
+        <h2>API</h2>
+
+	   	<p>
+	   		Newslint has <a href="/api/v1/">an API</a>.  You can list news clippings that were saved publicly, view a specific clipping, or even add clippings.
+		</p>
+
+		<p>
+			Eventually in a future version, hopefully, you can queue a site to be linted or have stats run on all the clippings saved.
+	   	</p>
+
+	   	<h2>Rules</h2>
+
+	   	<p>
+	   		In <a href="https://github.com/Xeus/newslint/tree/master/rule">the newslint repo</a>, there are several classifications of rules:
+	   	</p>
+
+	   	<ul>
+	   		<li><a href="https://github.com/Xeus/newslint/blob/master/rule/language.py">language</a></li>
+	   		<li><a href="https://github.com/Xeus/newslint/blob/master/rule/partisan_slang.py">partisan slang</a></li>
+	   		<li><a href="https://github.com/Xeus/newslint/blob/master/rule/pundit.py">punditry</a></li>
+	   		<li><a href="https://github.com/Xeus/newslint/blob/master/rule/rag.py">rag source</a></li>
+	   		<li><a href="https://github.com/Xeus/newslint/blob/master/rule/sensationalism.py">sensationalism</a></li>
+	   	</ul>
+
+	   	<p>
+	   		By no means are these rules comprehensive.  They should also not be expected to be perfect or to be exclusive -- any type of word that comes down on the left or right of politics should be worth flagging in the rules.
+	   	</p>
+
+    </div>  <!-- body-right -->
+
+</div>  <!-- body-container -->
+
+{% include 'partials/_footer.html' %}
+
+</body>
+
+</html>

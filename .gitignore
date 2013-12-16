@@ -6,3 +6,4 @@ components
 node_modules
 static/build
 .sass-cache
+non-tracked

@@ -4,6 +4,8 @@ A little project to lint a block of text to see how newsworthy, objective, sensa
 
 I wanted to port Rowan's code to Python first, then give it a Django server backend to interface with over the web so I could learn Django.  I wanted to use Django's views and templates but also build an API so I could build it a second way with a RESTful interface, potentially using Ember.js so I could learn that too.
 
+The Python port of joblint is at https://github.com/Xeus/joblint_python while my newslinter is at https://github.com/Xeus/newslint in case you want to check them out too.
+
 My other goals were to write Django tests (I didn't know enough Django to try TDD since I had to learn every step as I went) and to build a solid Grunt-enabled development environment using SASS, which I'd also never used before.
 
 And if all went well, I wanted to add in celery tasks so I could scrape a URL and serve up the results later.
@@ -59,3 +61,4 @@ Set up repo:
 * logging
 * make safe default `settings.py`
 * celery for scraping a url
+* front-end design
