@@ -2,7 +2,10 @@
 import os
 import sys
 
-DEBUG = True
+if 'RDS_HOSTNAME' in os.environ:
+    DEBUG = False
+else:
+    DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
