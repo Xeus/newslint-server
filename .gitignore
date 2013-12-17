@@ -9,4 +9,3 @@ static/build
 non-tracked
 newslint/fixtures
 .elasticbeanstalk/
-.ebextensions/
