@@ -1,6 +1,6 @@
 # Create your views here.
 from django.http import HttpResponse, Http404
-from django.utils import simplejson
+import json
 from django.shortcuts import get_object_or_404
 from linter.lib.newslint.newslint import newslint
 from linter.models import Clipping, ClippingForm, PUBLICATIONS
@@ -38,7 +38,7 @@ def index(request):
 
     api_logger.info('INFO: index (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
 
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
 
 
 def list(request):
@@ -58,7 +58,7 @@ def list(request):
         'title': 'list of public news clippings',
         'api_links': get_api_links_dict(request)
     }
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
 
 
 @csrf_exempt
@@ -113,7 +113,7 @@ def lint_result(request, data={}):
     # pp.pprint(data2)
     # print(simplejson.dumps(data))
     data['title'] = 'linter results'
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
 
 
 @csrf_exempt
@@ -138,7 +138,7 @@ def linter(request):
 
     api_logger.info('linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
     logger.info('text linted')
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
 
 
 def help(request):
@@ -180,7 +180,7 @@ def help(request):
     }
 
     api_logger.info('help (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
 
 
 def detail(request, pk):
@@ -206,4 +206,4 @@ def detail(request, pk):
         'result': result.fail_points,
         'api_links': get_api_links_dict(request)
     }
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), content_type='json')
