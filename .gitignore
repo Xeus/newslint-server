@@ -8,3 +8,5 @@ static/build
 .sass-cache
 non-tracked
 newslint/fixtures
+.elasticbeanstalk/
+.ebextensions/
