@@ -63,3 +63,4 @@ Set up repo:
 * celery for scraping a url (install redis where?)
 * api routes
 * save to db
+* kill leaky clippings.json

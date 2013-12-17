@@ -16,10 +16,10 @@ logger = logging.getLogger('django')
 
 def get_api_links_dict(request):
     return {
-        'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help',
-        'clippings_list': 'http://' + request.get_host() + '/' + API_PREFIX + 'clippings',
-        'specific_clipping': 'http://' + request.get_host() + '/' + API_PREFIX + 'clipping/1',
-        'lint and save a clipping (via POST)': 'http://' + request.get_host() + '/' + API_PREFIX + 'post',
+        'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help/',
+        'clippings_list': 'http://' + request.get_host() + '/' + API_PREFIX + 'clippings/',
+        'specific_clipping': 'http://' + request.get_host() + '/' + API_PREFIX + 'clipping/1/',
+        'lint and save a clipping (via POST)': 'http://' + request.get_host() + '/' + API_PREFIX + 'post/',
     }
 
 
@@ -52,7 +52,6 @@ def list(request):
         c.published = c.published.strftime(DATE_FORMAT)
         c._state = None
         clippings_decoded.append(c.__dict__)
-    print(clippings_decoded)
     data = {
         'current_url': request.build_absolute_uri(),
         'clippings_list': clippings_decoded,
@@ -65,12 +64,17 @@ def list(request):
 @csrf_exempt
 def lint_and_save(request):
     content = request.POST.get('content', '')
-    result = newslint(content)
-    clipping = Clipping(request.POST)
-    clipping.id = None
-    f = ClippingForm(request.POST)
+    clipping = Clipping()
+    f = ClippingForm(request.POST, instance=clipping)
     if f.is_valid():
+        result = newslint(content)
+        clipping.id = None
         data = {
+            'author': clipping.author,
+            'url': clipping.url,
+            'publication': clipping.publication,
+            'added': clipping.added.strftime(DATE_FORMAT),
+            'published': clipping.published.strftime(DATE_FORMAT),
             'current_url': request.build_absolute_uri(),
             'errors': result.errors,
             'warnings': result.warnings,
@@ -81,10 +85,13 @@ def lint_and_save(request):
         }
         data['status'] = 'saved to database'
         data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
-        clipping.save()
+        clipping_obj = f.save(commit=False)
+        if clipping_obj.published == None:
+            clipping_obj.published = timezone.now()
+        clipping_obj.save()
         data['permanent_url'] = 'http://' + request.get_host() + '/' + API_PREFIX + 'clipping/' + str(clipping.id)
-        api_logger.info('INFO: linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
-        logger.info('SUCCESS: text linted and saved to database')
+        api_logger.info('linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
+        logger.info('text linted and saved to database')
     else:
         data = {
             'current_url': request.build_absolute_uri(),
@@ -92,8 +99,8 @@ def lint_and_save(request):
             'content': request.POST.get('content', ''),
             'api_links': get_api_links_dict(request)
         }
-        api_logger.info('INFO: linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
-        logger.info('FAIL: form not valid')
+        api_logger.info('linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
+        logger.error('form not valid')
     return lint_result(request, data)
 
 
@@ -116,7 +123,6 @@ def linter(request):
         content = request.GET.get('content', '')
     elif request.method == 'POST':
         content = request.POST.get('content', '')
-        print(request.POST.dict())
     result = newslint(content)
     data = {
         'current_url': request.build_absolute_uri(),
@@ -130,8 +136,8 @@ def linter(request):
     if request.method == 'POST' and request.POST.get('public') == 'true':
         data['status'] = 'saved to database'
 
-    api_logger.info('INFO: linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
-    logger.info('SUCCESS: text linted')
+    api_logger.info('linter (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
+    logger.info('text linted')
     return HttpResponse(simplejson.dumps(data), mimetype='application/json')
 
 
@@ -173,7 +179,7 @@ def help(request):
         'api_links': get_api_links_dict(request)
     }
 
-    api_logger.info('INFO: help (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
+    api_logger.info('help (' + get_user_ip(request.META.get('REMOTE_ADDR')) + ')')
     return HttpResponse(simplejson.dumps(data), mimetype='application/json')
 
 

@@ -23,25 +23,28 @@ def lint(request):
     data = {
         'PUBLICATIONS': PUBLICATIONS,
         'page': 'lint',
-        'title': 'lint some text'
+        'title': 'lint some text',
+        'published_default': timezone.now()
     }
     return render(request, 'lint.html', data)
 
 
 def lint_clipping(request):
     clipping = Clipping()
+    content = request.POST.get('content', '')
     f = ClippingForm(request.POST, instance=clipping)
     if f.is_valid():
-        content = request.POST['content']
         result = newslint(content)
         clipping.id = None
+        if clipping.published == None:
+            clipping.published = timezone.now()
         data = {
             'author': clipping.author,
             'url': clipping.url,
             'publication': clipping.publication,
             'added': clipping.added.strftime(DATE_FORMAT),
             'published': clipping.published.strftime(DATE_FORMAT),
-            'url': request.build_absolute_uri(),
+            'current_url': request.build_absolute_uri(),
             'errors': result.errors,
             'warnings': result.warnings,
             'notices': result.notices,
@@ -51,17 +54,20 @@ def lint_clipping(request):
             'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help'
         }
         data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
-        logger.info('SUCCESS: text linted')
+        logger.info('text linted')
         if request.POST.get('public') == 'on':
-            f.save()
+            clipping_obj = f.save(commit=False)
+            if clipping_obj.published == None:
+                clipping_obj.published = timezone.now()
+            clipping_obj.save()
             data['permanent_url'] = 'http://' + request.get_host() + '/clipping/' + str(clipping.id)
             data['api_url'] = 'http://' + request.get_host() + '/api/v1/clipping/' + str(clipping.id)
-            logger.info('SUCCESS: form saved to database')
+            logger.info('form saved to database')
             data['public'] = True
         return lint_result(request, data)
     else:
         print(f.errors)
-        logger.error('FAIL: text failed to lint properly: ' + content)
+        logger.error('text failed to lint properly: ' + content)
         return render(request, 'index.html', {
             'error_message': "You didn't enter the form correctly.",
         })
@@ -82,7 +88,8 @@ def lint_result(request, data={}):
 def input_clipping(request):
     data = {
         'title': 'lint some text :: newslint',
-        'PUBLICATIONS': PUBLICATIONS
+        'PUBLICATIONS': PUBLICATIONS,
+        'published_default': timezone.now()
     }
     return render(request, 'input.html', data)
 

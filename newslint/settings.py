@@ -189,7 +189,7 @@ LOGGING = {
     }
 }
 
-FIXTURE_DIRS = (os.getcwd() + '/newslint/fixtures/')
+FIXTURE_DIRS = [os.getcwd() + '/newslint/fixtures/']
 
 # Bower stuff https://github.com/nvbn/django-bower
 BOWER_COMPONENTS_ROOT = os.getcwd() + '/components/'
