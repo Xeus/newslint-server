@@ -1,0 +1,81 @@
+<div class="lint-report">
+    <div class="report-credibility report-category">
+        <div class="report-score {% if result.credibility > 0 %} report-red {% else %} report-green {% endif %}">
+            {% if result.credibility > 0 %}-{{ result.credibility|floatformat }}{% else %}&nbsp;<i class="fa fa-check-square-o">&nbsp;</i>{% endif %}
+        </div>
+        <div class="report-title">
+            credibility
+        </div>
+    </div>
+    <div class="report-nonpartisanship report-category">
+        <div class="report-score {% if result.nonpartisanship > 0 %} report-red {% else %} report-green {% endif %}">
+            {% if result.nonpartisanship > 0 %}-{{ result.nonpartisanship|floatformat }}{% else %}&nbsp;<i class="fa fa-check-square-o">&nbsp;</i>{% endif %}
+        </div>
+        <div class="report-title">
+            non-partisanship
+        </div>
+    </div>
+    <div class="report-professionalism report-category">
+        <div class="report-score {% if result.professionalism > 0 %} report-red {% else %} report-green {% endif %}">
+            {% if result.professionalism > 0 %}-{{ result.professionalism|floatformat }}{% else %}&nbsp;<i class="fa fa-check-square-o">&nbsp;</i>{% endif %}
+        </div>
+        <div class="report-title">
+            professionalism
+        </div>
+    </div>
+    <div class="report-total report-category">
+        <div class="report-score {% if result.total > 0 %} report-red {% else %} report-green {% endif %}">
+            {% if result.total > 0 %}-{{ result.total|floatformat }}{% else %}&nbsp;<i class="fa fa-check-square-o">&nbsp;</i>{% endif %}
+        </div>
+        <div class="report-title">
+            total
+        </div>
+    </div>
+</div>
+
+<div class="msgs">
+    <div class="errors msg-div">
+        <h3>Errors</h3>
+        {% if errors|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+        {% for e in errors %}
+        <div class="msg">
+            {{ e.message }}:
+            <ul class="message">
+                <li class="detail">{{ e.detail }}<br><br>
+                <strong>evidence:</strong> <span class="evidence">{{ e.evidence }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="warnings msg-div">
+        <h3>Warnings</h3>
+        {% if warnings|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+        {% for w in warnings %}
+        <div class="msg">
+            {{ w.message }}:
+            <ul class="message">
+                <li class="detail">{{ w.detail }}<br><br>
+                <strong>evidence:</strong> <span class="evidence">{{ w.evidence }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="notices msg-div">
+        <h3>Notices</h3>
+        {% if notices|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+        {% for n in notices %}
+        <div class="msg">
+            {{ n.message }}:
+            <ul class="message">
+                <li class="detail">{{ n.detail }}<br><br>
+                <strong>evidence:</strong> <span class="evidence">{{ n.evidence }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>  <!-- msgs -->
+
+<div class="content-div">
+    <h4>Content</h4>
+    {{ content }}
+</div>

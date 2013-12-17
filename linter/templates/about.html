@@ -28,21 +28,7 @@
 	    	For me personally, curation of the news is an enjoyable task.  Picking out which stories have new data, which don't falsely present stories, which give a hard take on a subject both in objective reality and in a sense meaningful to the players involved in it -- these are the components of a healthy fascination with the news.
 	    </p>
 
-    </div>
-
-    <div class="body-right">
-
-        <h2>API</h2>
-
-	   	<p>
-	   		Newslint has <a href="/api/v1/">an API</a>.  You can list news clippings that were saved publicly, view a specific clipping, or even add clippings.
-		</p>
-
-		<p>
-			Eventually in a future version, hopefully, you can queue a site to be linted or have stats run on all the clippings saved.
-	   	</p>
-
-	   	<h2>Rules</h2>
+	    <h2>Rules</h2>
 
 	   	<p>
 	   		In <a href="https://github.com/Xeus/newslint/tree/master/rule">the newslint repo</a>, there are several classifications of rules:
@@ -58,6 +44,37 @@
 
 	   	<p>
 	   		By no means are these rules comprehensive.  They should also not be expected to be perfect or to be exclusive -- any type of word that comes down on the left or right of politics should be worth flagging in the rules.
+	   	</p>
+
+    </div>
+
+    <div class="body-right">
+
+        <h2>API</h2>
+
+	   	<p>
+	   		Newslint has <a href="/api/v1/">an API</a>.  You can list news clippings that were saved publicly, view a specific clipping, or even add clippings.
+		</p>
+
+		<p>
+			Send a GET request to <a href="http://{{ get_url }}?content=test%20string">http://{{ get_url }}?content=test%20string</a> or a POST request to <a href="http://{{ get_url }}">http://{{ get_url }}</a> using the key "content" for the text to lint.
+		</p>
+
+		<p>
+			Send a POST request to <a href="http://{{ get_post_url }}">http://{{ get_post_url }}</a> to submit info to the database.  Variables:
+		</p>
+
+		<ul>
+			<li><strong>title</strong>: a title for the saved news clipping</li>
+			<li><strong>publication</strong>: publication from which the clipping belongs</li>
+			<li><strong>url</strong>: URL for the publication, if online</li>
+			<li><strong>author</strong>: author of the news clipping</li>
+			<li><strong>added</strong>: date added to the newslint database (ex: MM/DD/YY)</li>
+			<li><strong>published</strong>: date published by the source/author (ex: MM/DD/YY)</li>
+		</ul>
+
+		<p>
+			Eventually in a future version, hopefully, you can queue a site to be linted or have stats run on all the clippings saved.
 	   	</p>
 
     </div>  <!-- body-right -->

@@ -58,7 +58,8 @@ Set up repo:
 
 ## TODO
 
-* logging
+* logging needs to save somewhere
 * make safe default `settings.py`
-* celery for scraping a url
-* front-end design
+* celery for scraping a url (install redis where?)
+* api routes
+* save to db

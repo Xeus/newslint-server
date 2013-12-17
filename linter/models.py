@@ -24,7 +24,7 @@ class Clipping(models.Model):
     url = models.CharField(max_length=255, default='', blank=True)
     content = models.TextField(default='')
     published = models.DateTimeField('date published', default=timezone.now(), blank=True)
-    added = models.DateTimeField('date added by user', default=timezone.now(), blank=True)
+    added = models.DateTimeField('date added by user', default=timezone.now(), blank=True, auto_now_add=True)
 
     def __unicode__(self):
         return self.title

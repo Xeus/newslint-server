@@ -17,5 +17,13 @@
     {% load static %}
     <script src="{% static 'modernizr/modernizr.min.js' %}"></script>
     <script src="{% static 'jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'momentjs/min/moment.min.js' %}"></script>
     <script src="{% static 'build/js/newslint-server.min.js' %}"></script>
+
+    <script>
+    	$(function() {
+	    	$('.button-lint').on('click', function(e) {
+	    		e.preventDefault();
+	    		window.location.href = '/lint';
+	    	});
+	    });
+    </script>

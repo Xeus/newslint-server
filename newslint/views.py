@@ -1,8 +1,13 @@
 from linter.lib.newslint.newslint import newslint
 from linter.models import Clipping, ClippingForm, PUBLICATIONS
-from django.shortcuts import render
-from datetime import datetime
-from api_views import API_PREFIX
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from settings import DATE_FORMAT, API_PREFIX
+from django.http import Http404
+import logging
+
+logger = logging.getLogger('django')
+api_logger = logging.getLogger('api')
 
 
 def index(request):
@@ -14,26 +19,49 @@ def index(request):
     return render(request, 'index.html', data)
 
 
+def lint(request):
+    data = {
+        'PUBLICATIONS': PUBLICATIONS,
+        'page': 'lint',
+        'title': 'lint some text'
+    }
+    return render(request, 'lint.html', data)
+
+
 def lint_clipping(request):
-    f = ClippingForm(request.POST)
+    clipping = Clipping()
+    f = ClippingForm(request.POST, instance=clipping)
     if f.is_valid():
         content = request.POST['content']
         result = newslint(content)
-        test = Clipping(request.POST)
-        test.added = datetime.now()
+        clipping.id = None
         data = {
-            'url': request.path,
+            'author': clipping.author,
+            'url': clipping.url,
+            'publication': clipping.publication,
+            'added': clipping.added.strftime(DATE_FORMAT),
+            'published': clipping.published.strftime(DATE_FORMAT),
+            'url': request.build_absolute_uri(),
             'errors': result.errors,
             'warnings': result.warnings,
             'notices': result.notices,
             'result': result.fail_points,
             'content': content,
+            'public': False,
             'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help'
         }
         data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
+        logger.info('SUCCESS: text linted')
+        if request.POST.get('public') == 'on':
+            f.save()
+            data['permanent_url'] = 'http://' + request.get_host() + '/clipping/' + str(clipping.id)
+            data['api_url'] = 'http://' + request.get_host() + '/api/v1/clipping/' + str(clipping.id)
+            logger.info('SUCCESS: form saved to database')
+            data['public'] = True
         return lint_result(request, data)
     else:
         print(f.errors)
+        logger.error('FAIL: text failed to lint properly: ' + content)
         return render(request, 'index.html', {
             'error_message': "You didn't enter the form correctly.",
         })
@@ -62,6 +90,47 @@ def input_clipping(request):
 def about(request):
     data = {
         'page': 'about',
-        'title': 'about'
+        'title': 'about',
+        'get_url': request.get_host() + '/' + API_PREFIX + 'linter/',
+        'get_post_url': request.get_host() + '/' + API_PREFIX + 'post/',
     }
     return render(request, 'about.html', data)
+
+
+def list(request):
+    try:
+        clippings = Clipping.objects.all().order_by('-added')[:30]
+    except Clipping.DoesNotExist:
+        raise Http404
+    data = {
+        'clippings_list': clippings,
+        'title': 'list of public news clippings'
+    }
+    return render(request, 'list.html', data)
+
+
+def detail(request, pk):
+    clipping = get_object_or_404(Clipping, pk=pk)
+    result = newslint(clipping.content)
+    title = 'untitled clipping'
+    if clipping.title != '':
+        title = clipping.title
+    data = {
+        'author': clipping.author,
+        'url': clipping.url,
+        'publication': clipping.publication,
+        'added': clipping.added.strftime(DATE_FORMAT),
+        'published': clipping.published.strftime(DATE_FORMAT),
+        'current_url': request.path,
+        'public': True,
+        'errors': result.errors,
+        'warnings': result.warnings,
+        'notices': result.notices,
+        'content': clipping.content,
+        'permanent_url': 'http://' + request.get_host() + '/clipping/' + str(clipping.id),
+        'api_url': 'http://' + request.get_host() + '/api/v1/clipping/' + str(clipping.id),
+        'title': title,
+        'result': result.fail_points,
+        'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help'
+    }
+    return render(request, 'detail.html', data)
