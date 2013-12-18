@@ -7,11 +7,12 @@ EXTRA_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..')
 if EXTRA_DIR not in sys.path:
     sys.path.append(EXTRA_DIR)
 
-if 'RDS_HOSTNAME' in os.environ:
+if vars.ENVIRONMENT == 'PRODUCTION':
     DEBUG = False
+    TEMPLATE_DEBUG = False
 else:
     DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+    TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
