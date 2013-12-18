@@ -86,7 +86,15 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
                 Order deny,allow
                 Require all granted
             </Files>
-        </Directory>    
+        </Directory>
+
+        <IfModule mod_expires.c>
+            <FilesMatch "\.(jpg|gif|png|css|js|map)$">
+                ExpiresActive on
+                ExpiresDefault "access plus 7 days"
+            </FilesMatch>
+        </IfModule>
+
 
         Alias /static /home/ubuntu/app/static
 
