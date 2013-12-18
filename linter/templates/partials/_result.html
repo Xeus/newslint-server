@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="report-total report-category">
-        <div class="report-score {% if result.total > 0 %} report-red {% else %} report-green {% endif %}">
+        <div class="report-score {% if result.total > 0 %} report-bright-red {% else %} report-green {% endif %}">
             {% if result.total > 0 %}-{{ result.total|floatformat }}{% else %}&nbsp;<i class="fa fa-check-square-o">&nbsp;</i>{% endif %}
         </div>
         <div class="report-title">
