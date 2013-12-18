@@ -95,7 +95,10 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
             </FilesMatch>
         </IfModule>
 
-
+        <LocationMatch "\.(pdf|ico)$">
+            SetHandler None
+        </LocationMatch>
+        Alias /favicon.ico /home/ubuntu/app/static/build/img/favicon.ico
         Alias /static /home/ubuntu/app/static
 
         <Directory /home/ubuntu/app/static>
