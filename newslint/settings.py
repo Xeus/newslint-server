@@ -99,6 +99,8 @@ STATICFILES_DIRS = (
     os.getcwd() + STATIC_URL,
 )
 
+ADMIN_MEDIA_PREFIX = '/static/build/'
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
