@@ -9,6 +9,7 @@ PUBLICATIONS = (
     ('Daily Kos', 'Daily Kos'),
     ('Firedoglake', 'Firedoglake'),
     ('FOX News', 'FOX News'),
+    ('InfoWars.com', 'InfoWars.com'),
     ('Huffington Post', 'Huffington Post'),
     ('Los Angeles Times', 'Los Angeles Times'),
     ('New York Times', 'New York Times'),
