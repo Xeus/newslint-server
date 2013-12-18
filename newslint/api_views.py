@@ -164,7 +164,7 @@ def help(request):
                     "detail": "References to pundits, who give more lip service to politics and rumor than to subject matter expertise and objectivity, can undermine the veracity of a story.",
                     "evidence": "chris hayes"
                 }],
-                "url": "http://localhost:8000/api/v1/linter/",
+                "current_url": 'http://' + request.get_host() + '/api/v1/linter/',
                 'api_links': get_api_links_dict(request),
                 "content": "chris hayes",
                 "result": {
