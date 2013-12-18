@@ -33,9 +33,24 @@ So basically this is a testbed site to learn lots of stuff.  Hope it's useful to
 
 You might need these installed:
 
-    sudo curl https://npmjs.org/install.sh | sh
-    sudo npm install -g bower
-    sudo gem update --system
+    sudo add-apt-repository ppa:chris-lea/node.js
+    curl http://repo.varnish-cache.org/debian/GPG-key.txt | sudo apt-key add -
+    echo "deb http://repo.varnish-cache.org/ubuntu/ precise varnish-3.0" | sudo tee -a /etc/apt/sources.list
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install apache2 python-setuptools libapache2-mod-wsgi python-pip sqlite3 libsqlite3-dev php5 libapache2-mod-php5 varnish python-software-properties nodejs rubygems build-essential git
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
+    sudo service apache2 restart
+    sudo curl https://npmjs.org/install.sh | sudo sh
+    sudo npm cache clean -f
+    sudo npm install -g n grunt-cli bower forever
+    sudo n stable
+    wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
+    sudo easy_install pip
+    sudo easy_install -U distribute
+    sudo gem update
     sudo gem install compass
     sudo gem install sass
 
