@@ -38,7 +38,7 @@ You might need these installed:
     echo "deb http://repo.varnish-cache.org/ubuntu/ precise varnish-3.0" | sudo tee -a /etc/apt/sources.list
     sudo apt-get update
     sudo apt-get upgrade
-    sudo apt-get install apache2 python-setuptools libapache2-mod-wsgi python-pip sqlite3 libsqlite3-dev php5 libapache2-mod-php5 varnish python-software-properties nodejs rubygems build-essential git mysql-server mysql-client
+    sudo apt-get install apache2 python-setuptools libapache2-mod-wsgi python-pip sqlite3 libsqlite3-dev php5 libapache2-mod-php5 varnish python-software-properties nodejs rubygems build-essential git mysql-server mysql-client libmysqlclient-dev python-dev
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
     sudo dpkg -i mod-pagespeed-*.deb
     sudo apt-get -f install
