@@ -48,7 +48,6 @@ You might need these installed:
     sudo npm install -g n grunt-cli bower forever
     sudo n stable
     wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
-    sudo easy_install pip
     sudo easy_install -U distribute
     sudo gem update
     sudo gem install compass
@@ -62,10 +61,42 @@ Set up repo:
     npm install
     grunt build
     python manage.py syncdb
+    cd linter/lib
+    git clone git@github.com:Xeus/newslint.git
 
 ## Start Server
 
+If you're running it locally, do this from the `app/` directory.
+
+    cd ~/app
     python manage.py runserver
+
+If on a remote or staging server, you're probably using Apache.
+
+In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes the following:
+
+    <VirtualHost *:80>
+        ServerName localhost
+        WSGIScriptAlias / /home/ubuntu/app/newslint/wsgi.py
+
+        <Directory /home/ubuntu/app/newslint>
+            <Files wsgi.py>
+                Order deny,allow
+                Require all granted
+            </Files>
+        </Directory>    
+
+        Alias /static /home/ubuntu/app/static
+
+        <Directory /home/ubuntu/app/static>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        <Location /git_pull>
+            Satisfy any
+            Allow from 192.30.252.0/22 127.0.0.1
+        </Location>
+    </VirtualHost>
 
 ## Tests
 
