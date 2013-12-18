@@ -23,6 +23,12 @@ module.exports = function(grunt) {
                 src: 'components/bower_components/font-awesome/css/font-awesome.min.css',
                 dest: 'static/build/css/font-awesome.min.css'
             },
+            font_awesome_fonts: {
+                cwd: 'components/bower_components/font-awesome/fonts/',
+                src: '*',
+                expand: true,
+                dest: 'static/build/fonts/'
+            },
             jquery: {
                 src: 'components/bower_components/jquery/jquery.min.js',
                 dest: 'static/build/js/jquery.min.js'
