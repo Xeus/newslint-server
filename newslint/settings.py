@@ -165,6 +165,14 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 
+if vars.ENVIRONMENT == 'PRODUCTION':
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
+        }
+    }
+
 # TODO: log to where?
 LOGGING = {
     'version': 1,

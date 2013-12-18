@@ -6,9 +6,11 @@ I wanted to port Rowan's code to Python first, then give it a Django server back
 
 The Python port of joblint is at https://github.com/Xeus/joblint_python while my newslinter is at https://github.com/Xeus/newslint in case you want to check them out too.
 
-My other goals were to write Django tests (I didn't know enough Django to try TDD since I had to learn every step as I went) and to build a solid Grunt-enabled development environment using SASS, which I'd also never used before.
+My other goals were to write Django tests and analyze them with `coverage` (I didn't know enough Django to try TDD since I had to learn every step as I went) and to build a solid Grunt-enabled development environment using SASS, which I'd also never used before.
 
-And if all went well, I wanted to add in celery tasks so I could scrape a URL and serve up the results later.
+I tried to deploy this to Amazon Elastic Beanstalk but ran into complications (git submodules, django pathing, static files from grunt, local/production settings) so I set it up on an EC2 server behind Varnish and Apache instead.
+
+In the future, if things go well, I hope to add in celery tasks so I could scrape a URL and serve up the results later.
 
 So basically this is a testbed site to learn lots of stuff.  Hope it's useful to someone else too!
 
@@ -106,8 +108,4 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
 ## TODO
 
 * logging needs to save somewhere
-* make safe default `settings.py`
 * celery for scraping a url (install redis where?)
-* api routes
-* save to db
-* kill leaky clippings.json
