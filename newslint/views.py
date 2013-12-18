@@ -113,6 +113,7 @@ def list(request):
         'clippings_list': clippings,
         'title': 'list of public news clippings'
     }
+    print(data)
     return render(request, 'list.html', data)
 
 
