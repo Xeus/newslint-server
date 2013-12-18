@@ -140,4 +140,5 @@ def detail(request, pk):
         'result': result.fail_points,
         'help': 'http://' + request.get_host() + '/' + API_PREFIX + 'help'
     }
+    data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
     return render(request, 'detail.html', data)

@@ -133,6 +133,7 @@ def linter(request):
         'content': content,
         'api_links': get_api_links_dict(request)
     }
+    data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
     if request.method == 'POST' and request.POST.get('public') == 'true':
         data['status'] = 'saved to database'
 
@@ -206,4 +207,5 @@ def detail(request, pk):
         'result': result.fail_points,
         'api_links': get_api_links_dict(request)
     }
+    data['result']['total'] = data['result']['professionalism'] + data['result']['nonpartisanship'] + data['result']['credibility']
     return HttpResponse(json.dumps(data), content_type='json')
