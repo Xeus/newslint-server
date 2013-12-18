@@ -8,7 +8,7 @@ The Python port of joblint is at https://github.com/Xeus/joblint_python while my
 
 My other goals were to write Django tests and analyze them with `coverage` (I didn't know enough Django to try TDD since I had to learn every step as I went) and to build a solid Grunt-enabled development environment using SASS, which I'd also never used before.
 
-I tried to deploy this to Amazon Elastic Beanstalk but ran into complications (git submodules, django pathing, static files from grunt, local/production settings) so I set it up on an EC2 server behind Varnish and Apache instead.
+I tried to deploy this to Amazon Elastic Beanstalk but ran into complications (git submodules, django pathing, static files from grunt, local/production settings) so I set it up on an EC2 server behind memcache, Varnish, and Apache instead.
 
 In the future, if things go well, I hope to add in celery tasks so I could scrape a URL and serve up the results later.
 

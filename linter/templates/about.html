@@ -53,15 +53,27 @@
         <h2>API</h2>
 
 	   	<p>
-	   		Newslint has <a href="/api/v1/">an API</a>.  You can list news clippings that were saved publicly, view a specific clipping, or even add clippings.
+	   		Newslint has <a href="/api/v1/">an API</a>.  You can list news clippings that were saved publicly, view a specific clipping, or even add clippings.  Example input/output is available through the <a href="/api/v1/help/">API help endpoint</a>.
 		</p>
 
 		<p>
-			Send a GET request to <a href="http://{{ get_url }}?content=test%20string">http://{{ get_url }}?content=test%20string</a> or a POST request to <a href="http://{{ get_url }}">http://{{ get_url }}</a> using the key "content" for the text to lint.
+			To lint some text:
 		</p>
 
+		<ul>
+			<li>
+				GET: <a href="http://{{ get_url }}?content=test%20string">http://{{ get_url }}?content=test%20string</a>
+			</li>
+			<li>
+				POST: <a href="http://{{ get_url }}">http://{{ get_url }}</a> using the key "content" for the text to lint, plus the variables below; won't save your data
+			</li>
+			<li>
+				Send a POST request to <a href="http://{{ get_post_url }}">http://{{ get_post_url }}</a> to submit info to the database; WILL save your data
+			</li>
+		</ul>
+
 		<p>
-			Send a POST request to <a href="http://{{ get_post_url }}">http://{{ get_post_url }}</a> to submit info to the database.  Variables:
+			Variables:
 		</p>
 
 		<ul>
@@ -74,7 +86,7 @@
 		</ul>
 
 		<p>
-			Eventually in a future version, hopefully, you can queue a site to be linted or have stats run on all the clippings saved.
+			Eventually in a future version, hopefully, you will be able to queue a site to be linted or have stats run on all the clippings saved.
 	   	</p>
 
     </div>  <!-- body-right -->
