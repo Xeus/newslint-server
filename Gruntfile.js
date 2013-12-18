@@ -14,6 +14,28 @@ module.exports = function(grunt) {
                 }
             }
         },
+        copy: {
+            momentjs: {
+                src: 'components/bower_components/momentjs/min/moment.min.js',
+                dest: 'static/build/js/moment.min.js'
+            },
+            font_awesome: {
+                src: 'components/bower_components/font-awesome/css/font-awesome.min.css',
+                dest: 'static/build/css/font-awesome.min.css'
+            },
+            jquery: {
+                src: 'components/bower_components/jquery/jquery.min.js',
+                dest: 'static/build/js/jquery.min.js'
+            },
+            jquery_map: {
+                src: 'components/bower_components/jquery/jquery.min.map',
+                dest: 'static/build/js/jquery.min.map'
+            },
+            modernizr: {
+                src: 'components/bower_components/modernizr/modernizr.min.js',
+                dest: 'static/build/js/modernizr.min.js'
+            }
+        },
         compass: {
             dist: {
                 options: {
@@ -21,7 +43,7 @@ module.exports = function(grunt) {
                     cssDir: 'static/build/css',
                     environment: 'production'
                 }
-            },
+            }
             // dev: {
             //     options: {
             //         sassDir: 'sass',
@@ -53,8 +75,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('build', ['uglify', 'compass', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('build', ['uglify', 'copy', 'compass', 'autoprefixer', 'cssmin']);
 
 };
 

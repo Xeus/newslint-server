@@ -9,6 +9,7 @@
     "grunt-contrib-compass": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-nodeunit": "*",
-    "grunt-contrib-uglify": "*"
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-copy": "*"
   }
 }

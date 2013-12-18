@@ -90,6 +90,7 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
 
         <Directory /home/ubuntu/app/static>
             Order allow,deny
+            Require all granted
             Allow from all
         </Directory>
         <Location /git_pull>
