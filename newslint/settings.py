@@ -1,6 +1,7 @@
 # Django settings for newslint project.
 import os
 import sys
+from vars import DB_PATH
 
 EXTRA_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..'))
 if EXTRA_DIR not in sys.path:
@@ -21,7 +22,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'newslint.db',  # Or path to database file if using sqlite3.
+        'NAME': DB_PATH + 'newslint.db',  # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
