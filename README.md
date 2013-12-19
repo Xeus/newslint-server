@@ -120,5 +120,4 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
 
 * logging needs to save somewhere
 * celery for scraping a url (install redis where?)
-* test for making sure total is in returned data
 * mobile spacing, header spacing, footer spacing

@@ -48,9 +48,17 @@ class Server_Route_Tests(TestCase):
         resp = self.client.get('/lint/')
         self.assertEqual(resp.status_code, 200)
 
+    def test_post(self):
+        resp = self.client.post('/post/', {'content': "chris%20hayes"})
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue(1.0, resp.context['result']['total'])
+        self.assertTrue(1.0, resp.context['result']['credibility'])
+        self.assertTrue("chris%20hayes", resp.context['content'])
+
     def test_clipping(self):
         resp = self.client.get('/clipping/1/')
         self.assertEqual(resp.status_code, 200)
+        self.assertTrue('total' in resp.context['result'])
 
     def test_about(self):
         resp = self.client.get('/about/')
@@ -73,10 +81,12 @@ class API_Route_Tests(TestCase):
     def test_api_clipping(self):
         resp = self.client.get(self.api_prefix + 'clipping/1/')
         self.assertEqual(resp.status_code, 200)
+        self.assertTrue('"total":' in resp.content)
 
     def test_api_linter(self):
         resp = self.client.get(self.api_prefix + 'linter/')
         self.assertEqual(resp.status_code, 200)
+        self.assertTrue('"total":' in resp.content)
 
     def test_api_linter_get(self):
         resp = self.client.get(self.api_prefix + 'linter/?content=test')
@@ -88,6 +98,7 @@ class API_Route_Tests(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('"content": "chris%20hayes"' in resp.content)
         self.assertTrue('"credibility": 1.0' in resp.content)
+        self.assertTrue('"total": 1.0' in resp.content)
 
     def test_api_help(self):
         resp = self.client.get(self.api_prefix + 'help/')
