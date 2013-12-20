@@ -14,7 +14,8 @@ def index(request):
     data = {
         'PUBLICATIONS': PUBLICATIONS,
         'page': 'index',
-        'title': 'read between the lines'
+        'title': 'read between the lines',
+        'published_default': timezone.now()
     }
     return render(request, 'index.html', data)
 
@@ -83,15 +84,6 @@ def lint_result(request, data={}):
     # print(simplejson.dumps(data))
     data['title'] = 'linter results'
     return render(request, 'result.html', data)
-
-
-def input_clipping(request):
-    data = {
-        'title': 'lint some text :: newslint',
-        'PUBLICATIONS': PUBLICATIONS,
-        'published_default': timezone.now()
-    }
-    return render(request, 'input.html', data)
 
 
 def about(request):
