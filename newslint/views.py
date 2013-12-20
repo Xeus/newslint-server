@@ -15,7 +15,7 @@ def index(request):
         'PUBLICATIONS': PUBLICATIONS,
         'page': 'index',
         'title': 'read between the lines',
-        'published_default': timezone.now()
+        'published_default': timezone.now().strftime("%Y-%m-%d")
     }
     return render(request, 'index.html', data)
 
@@ -25,7 +25,7 @@ def lint(request):
         'PUBLICATIONS': PUBLICATIONS,
         'page': 'lint',
         'title': 'lint some text',
-        'published_default': timezone.now()
+        'published_default': timezone.now().strftime("%Y-%m-%d")
     }
     return render(request, 'lint.html', data)
 
@@ -39,6 +39,7 @@ def lint_clipping(request):
         clipping.id = None
         if clipping.published == None:
             clipping.published = timezone.now()
+        clipping.added = timezone.now()
         data = {
             'author': clipping.author,
             'url': clipping.url,

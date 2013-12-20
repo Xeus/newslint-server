@@ -1,0 +1,77 @@
+        <h2>Enter Text for the Newslinter</h2>
+
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <form name="form_clipping" id="form_clipping" method="POST" action="{% url 'lint_clipping' %}">
+        {% csrf_token %}
+
+        <div class="textarea-div">
+            <textarea name="content" class="form-content" placeholder="copy/paste some text from a news article or blog post into here"></textarea>
+        </div>
+
+        <br>
+
+        <div class="more-div"><a href="#" class="more-link">show more fields</a></div>
+
+        <br>
+
+        <div class="hidden-fields">
+
+            <div class="div-name form-row">
+                <div class="div-name-title form-cell form-header">
+                    <label for="title">clipping title</label>
+                </div>
+                <div class="div-name-field form-cell">
+                    <input type="text" name="title" id="title" />
+                </div>
+            </div>
+
+            <div class="div-publication form-row">
+                <div class="div-publication-title form-cell form-header">
+                    <label for="publication">publication</label>
+                </div>
+                <div class="div-publication-field form-cell">
+                    <select name="publication" id="publication">
+                        <option value="">-- none --</option>
+                        {% for k, v in PUBLICATIONS %}
+                        <option value="{{ k }}">{{ v }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="div-author form-row">
+                <div class="div-author-title form-cell form-header">
+                    <label for="author">author</label>
+                </div>
+                <div class="div-author-field form-cell">
+                    <input type="text" name="author" id="author" />
+                </div>
+            </div>
+
+            <div class="div-url form-row">
+                <div class="div-url-title form-cell form-header">
+                    <label for="url">url</label>
+                </div>
+                <div class="div-url-field form-cell">
+                    <input type="text" name="url" id="url" />
+                </div>
+            </div>
+
+            <div class="div-published form-row">
+                <div class="div-published-title form-cell form-header">
+                    <label for="published">published</label>
+                </div>
+                <div class="div-published-field form-cell">
+                    <input type="date" name="published" value="{{ published_default }}" id="published" />
+                </div>
+            </div>
+
+        </div>  <!-- hidden-fields -->
+
+        <div class="submit-div">
+            <button type="submit" id="form_submit">lint this news clipping</button>
+            <span class="public-checkbox"><input type="checkbox" name="public" id="public" title="(note: will give it a permanent URL too)" /> share publicly</span>
+        </div>
+
+        </form>
