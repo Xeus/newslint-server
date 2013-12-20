@@ -9,10 +9,10 @@ urlpatterns = patterns('',
 
     # public routes
     url(r'^$', views.index, name='index'),
-    url(r'^about/', views.about, name='about'),
-    url(r'^lint/', views.lint, name='lint'),  # user form to add clipping
-    url(r'^post/', views.lint_clipping, name='lint_clipping'),  # handles POST request
-    url(r'^result/', views.lint_result, name='lint_result'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^lint/$', views.lint, name='lint'),  # user form to add clipping
+    url(r'^post/$', views.lint_clipping, name='lint_clipping'),  # handles POST request
+    url(r'^result/$', views.lint_result, name='lint_result'),
     url(r'^clippings/$', views.list, name='list'),
     url(r'^clipping/(?P<pk>\d+)', views.detail, name='detail'),
 

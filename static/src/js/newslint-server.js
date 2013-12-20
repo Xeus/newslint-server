@@ -4,7 +4,7 @@
 $(function() {
     $('.button-lint').on('click', function(e) {
         e.preventDefault();
-        window.location.href = '/lint';
+        window.location.href = '/lint/';
     });
     $('.more-link').on('click', function(e) {
         e.preventDefault();
