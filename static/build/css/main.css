@@ -448,6 +448,10 @@ footer a {
   .hidden-fields {
     margin: 10px auto;
   }
+
+  footer a {
+    display: block;
+  }
 }
 
 @media (max-width: 750px) {
