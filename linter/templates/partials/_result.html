@@ -35,47 +35,55 @@
 
 <div class="msgs">
     <div class="errors msg-div">
-        <h3>Errors</h3>
-        {% if errors|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
-        {% for e in errors %}
-        <div class="msg">
-            {{ e.message }}:
-            <ul class="message">
-                <li class="detail">{{ e.detail }}<br><br>
-                <strong>evidence:</strong> <span class="evidence">{{ e.evidence }}</li>
-            </ul>
+        <div class="msg-div-inner">
+            <h3>Errors</h3>
+            {% if errors|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+            {% for e in errors %}
+            <div class="msg">
+                {{ e.message }}:
+                <ul class="message">
+                    <li class="detail">{{ e.detail }}<br><br>
+                    <strong>evidence:</strong> <span class="evidence">{{ e.evidence }}</span></li>
+                </ul>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     <div class="warnings msg-div">
-        <h3>Warnings</h3>
-        {% if warnings|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
-        {% for w in warnings %}
-        <div class="msg">
-            {{ w.message }}:
-            <ul class="message">
-                <li class="detail">{{ w.detail }}<br><br>
-                <strong>evidence:</strong> <span class="evidence">{{ w.evidence }}</li>
-            </ul>
+        <div class="msg-div-inner">
+            <h3>Warnings</h3>
+            {% if warnings|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+            {% for w in warnings %}
+            <div class="msg">
+                {{ w.message }}:
+                <ul class="message">
+                    <li class="detail">{{ w.detail }}<br><br>
+                    <strong>evidence:</strong> <span class="evidence">{{ w.evidence }}</span></li>
+                </ul>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     <div class="notices msg-div">
-        <h3>Notices</h3>
-        {% if notices|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
-        {% for n in notices %}
-        <div class="msg">
-            {{ n.message }}:
-            <ul class="message">
-                <li class="detail">{{ n.detail }}<br><br>
-                <strong>evidence:</strong> <span class="evidence">{{ n.evidence }}</li>
-            </ul>
+        <div class="msg-div-inner">
+            <h3>Notices</h3>
+            {% if notices|length == 0 %}<div class="no-messages">none found!</div>{% endif %}
+            {% for n in notices %}
+            <div class="msg">
+                {{ n.message }}:
+                <ul class="message">
+                    <li class="detail">{{ n.detail }}<br><br>
+                    <strong>evidence:</strong> <span class="evidence">{{ n.evidence }}</span></li>
+                </ul>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>  <!-- msgs -->
 
 <div class="content-div">
-    <h4>Content</h4>
-    {{ content }}
+    <div class="content-div-inner">
+        <h4>Content</h4>
+        {{ content }}
+    </div>
 </div>

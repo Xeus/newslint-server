@@ -126,11 +126,16 @@ textarea.form-content {
 
 .hidden-fields {
   display: none;
-  margin: 10px 0 30px;
+  margin: 10px auto 30px;
 }
 
-.body-main {
-  margin: 50px auto;
+.textarea-div {
+  width: 100%;
+  text-align: center;
+}
+
+.submit-div {
+  text-align: center;
 }
 
 .lint-report,
@@ -144,7 +149,7 @@ textarea.form-content {
 .msgs {
   min-width: 1px;
   clear: both;
-  width: 95%;
+  width: 100%;
   margin: 50px auto 0 auto;
 }
 
@@ -152,14 +157,25 @@ textarea.form-content {
   margin-top: 50px;
 }
 
+.body-lint {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
 .msg-div {
-  width: 27%;
+  width: 31%;
   float: left;
   margin: 0 10px;
 }
 
 .msg-div h3 {
   margin: 5px 0;
+}
+
+.msg-div-inner,
+.content-div-inner {
+  padding: 20px;
 }
 
 .evidence {
@@ -171,6 +187,7 @@ textarea.form-content {
   min-width: 1px;
   clear: both;
   width: 70%;
+  font-size: 8pt;
   margin: 20px auto;
   color: #bdbfbe;
 }
@@ -182,7 +199,6 @@ textarea.form-content {
 .msg-div,
 .content-div {
   border-radius: 10px;
-  padding: 20px;
   border: solid black 1px;
 }
 
@@ -222,7 +238,7 @@ footer {
   display: table;
   width: 60%;
   min-width: 1px;
-  margin: 100px auto;
+  margin: 70px auto;
   font-size: 8pt;
   clear: both;
 }
@@ -342,6 +358,7 @@ footer a {
   display: block;
   text-align: center;
   width: 100%;
+  word-break: break-word;
 }
 
 @media (max-width: 450px) {
@@ -352,7 +369,15 @@ footer a {
   }
 
   body {
-    width: 95%;
+    width: 90%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    text-align: center;
   }
 
   button#form_submit {
@@ -374,7 +399,7 @@ footer a {
   }
 
   .header-nav a {
-    font-size: 8pt;
+    font-size: 10pt;
   }
 
   .msgs {
@@ -382,11 +407,46 @@ footer a {
   }
 
   .msg-div {
-    width: 100%;
+    width: 100% !important;
   }
 
   .footer-right {
     margin-top: 20px;
+  }
+
+  .content-div {
+    width: 100%;
+  }
+
+  .body-right {
+    margin-top: 50px;
+  }
+
+  .body-container {
+    word-break: break-word;
+  }
+
+  .form-row {
+    margin: 40px 0;
+    display: block;
+  }
+
+  .form-cell {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .form-header {
+    text-align: center;
+  }
+
+  .body-lint {
+    width: 100%;
+  }
+
+  .hidden-fields {
+    margin: 10px auto;
   }
 }
 
@@ -417,6 +477,11 @@ footer a {
 
   .report-category {
     width: 100%;
+    margin: 10px 0;
+  }
+
+  .body-container {
+    margin-top: 70px;
   }
 }
 
@@ -448,11 +513,11 @@ footer a {
   }
 
   .msgs {
-    margin: 50px 0;
+    margin: 30px auto;
   }
 
   .msg-div {
-    width: 90%;
+    width: 100%;
     margin: 10px 0;
   }
 

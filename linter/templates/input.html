@@ -5,9 +5,11 @@
         <form name="form_clipping" id="form_clipping" method="POST" action="{% url 'lint_clipping' %}">
         {% csrf_token %}
 
-        <textarea name="content" class="form-content" placeholder="copy/paste some text from a news article or blog post into here"></textarea>
+        <div class="textarea-div">
+            <textarea name="content" class="form-content" placeholder="copy/paste some text from a news article or blog post into here"></textarea>
+        </div>
 
-        <br><br>
+        <br>
 
         <div class="more-div"><a href="#" class="more-link">show more fields</a></div>
 
@@ -67,7 +69,9 @@
 
         </div>  <!-- hidden-fields -->
 
-        <button type="submit" id="form_submit">lint this news clipping</button>
-        <span class="public-checkbox"><input type="checkbox" name="public" id="public" title="(note: will give it a permanent URL too)" /> share publicly</span>
+        <div class="submit-div">
+            <button type="submit" id="form_submit">lint this news clipping</button>
+            <span class="public-checkbox"><input type="checkbox" name="public" id="public" title="(note: will give it a permanent URL too)" /> share publicly</span>
+        </div>
 
         </form>

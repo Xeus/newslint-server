@@ -10,21 +10,25 @@
 
 {% include 'partials/_nav.html' %}
 
-<h2>{{ title }}</h2>
+<div class="body-container">
 
-{% if clippings_list %}
-    <ul>
-    {% for clipping in clippings_list %}
-        <li><a href="/clipping/{{ clipping.id }}/">{% if clipping.title != '' %}{{ clipping.title }}{% else %}untitled clipping{% endif %}</a><br>
-        	{{ clipping.content | truncatewords:20 }}
-       	</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No clippings are available.</p>
-{% endif %}
+    <h2>{{ title }}</h2>
 
-<p>{{ result.fail_points }}</p>
+    {% if clippings_list %}
+        <ul>
+        {% for clipping in clippings_list %}
+            <li><a href="/clipping/{{ clipping.id }}/">{% if clipping.title != '' %}{{ clipping.title }}{% else %}untitled clipping{% endif %}</a><br>
+            	{{ clipping.content | truncatewords:20 }}
+           	</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No clippings are available.</p>
+    {% endif %}
+
+    <p>{{ result.fail_points }}</p>
+
+</div> <!-- body-container -->
 
 {% include 'partials/_footer.html' %}
 

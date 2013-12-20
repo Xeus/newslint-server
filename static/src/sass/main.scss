@@ -86,32 +86,44 @@ textarea.form-content {
 .public-checkbox {margin-left: 15px;}
 .hidden-fields {
 	display: none;
-	margin: 10px 0 30px;
+	margin: 10px auto 30px;
+}
+.textarea-div {
+	width: 100%;
+	text-align: center;
+}
+.submit-div {
+	text-align: center;
 }
 
 /* uniques */
-.body-main {
-	margin: 50px auto;
-}
 .lint-report, .msgs, .content-div, .body-container, .header-container {
 	display: table;
 }
 .msgs {
 	min-width: 1px;
 	clear: both;
-	width: 95%;
+	width: 100%;
 	margin: 50px auto 0 auto;
 }
 .body-container {
 	margin-top: 50px;
 }
+.body-lint {
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
 .msg-div {
-	width: 27%;
+	width: 31%;
 	float: left;
 	h3 {
 		margin: 5px 0;
 	}
 	margin: 0 10px;
+}
+.msg-div-inner, .content-div-inner {
+	padding: 20px;
 }
 .evidence {
 	font-style: italic;
@@ -121,6 +133,7 @@ textarea.form-content {
 	min-width: 1px;
 	clear: both;
 	width: 70%;
+	font-size: 8pt;
 	margin: 20px auto;
 	color: $light-gray;
 }
@@ -129,7 +142,6 @@ textarea.form-content {
 }
 .msg-div, .content-div {
 	border-radius: 10px;
-	padding: 20px;
 	border: solid black 1px;
 }
 .lint-report {
@@ -162,7 +174,7 @@ footer {
 	display: table;
 	width: 60%;
 	min-width: 1px;
-	margin: 100px auto;
+	margin: 70px auto;
 	font-size: 8pt;
 	clear: both;
 	a {
@@ -268,20 +280,30 @@ footer {
 	display: block;
 	text-align: center;
 	width: 100%;
+	word-break: break-word;
 }
 
 /* media queries */
 @media (max-width: 450px) {
 	.more-link {text-align: center; display: block; margin: auto;}
-	body {width: 95%}
+	body {width: 90%}
+	h1, h2, h3, h4, h5 {text-align: center;}
 	button#form_submit {display: block; margin: auto}
 	span.public-checkbox {text-align: center;}
 	textarea.form-content {width: 80%}
 	input[type=text], input[type=date] {width: auto;}
-	.header-nav a {font-size: 8pt;}
+	.header-nav a {font-size: 10pt;}
 	.msgs {width: 100%;}
-	.msg-div {width: 100%;}
+	.msg-div {width: 100% !important;}
 	.footer-right {margin-top: 20px;}
+	.content-div {width: 100%;}
+	.body-right {margin-top: 50px;}
+	.body-container {word-break: break-word;}
+	.form-row {margin: 40px 0; display: block;}
+	.form-cell {display: block; margin: 0; padding: 0}
+	.form-header {text-align: center;}
+	.body-lint {width: 100%;}
+	.hidden-fields {margin: 10px auto;}
 }
 @media (max-width: 750px) {
 	input, select, textarea {font-size: 8pt;}
@@ -289,7 +311,8 @@ footer {
 	footer {width: 90%;}
 	.footer-left {width: 65%;}
 	.form-content {width: 80%;}
-	.report-category {width: 100%;}
+	.report-category {width: 100%; margin: 10px 0;}
+	.body-container {margin-top: 70px;}
 }
 @media (max-width: 910px) {
 	.nav-item {display: block; line-height: 1em; margin: 0;}
@@ -301,8 +324,8 @@ footer {
 @media (max-width: 1300px) {
 	.report-title {font-size: 12pt;}
 	.report-score {font-size: 40pt;}
-	.msgs {margin: 50px 0;}
-	.msg-div {width: 90%; margin: 10px 0;}
+	.msgs {margin: 30px auto;}
+	.msg-div {width: 100%; margin: 10px 0;}
 	.button-lint {padding: 3px;}
 	.header-container {margin-bottom: 20px;}
 }
