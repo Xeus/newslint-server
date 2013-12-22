@@ -1,5 +1,7 @@
 # newslint-server
 
+Code running at http://newslint.com/ -- give it a shot!
+
 A little project to lint a block of text to see how newsworthy, objective, sensationalist, pundit-prone, etc. it is.  It comes from my interest in reading the news and identifying political bait.  And it was enabled by the excellent joblint project originally done in JavaScript by [Rowan Manning](https://github.com/rowanmanning/joblint).
 
 I wanted to port Rowan's code to Python first, then give it a Django server backend to interface with over the web so I could learn Django.  I wanted to use Django's views and templates but also build an API so I could build it a second way with a RESTful interface, potentially using Ember.js so I could learn that too.
@@ -120,4 +122,4 @@ In `/etc/apache2/sites-enabled/staging`, make sure your specific site includes t
 
 * logging needs to save somewhere
 * celery for scraping a url (install redis where?)
-* mobile spacing, header spacing, footer spacing
+* refactor data into class
