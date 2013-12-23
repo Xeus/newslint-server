@@ -68,6 +68,10 @@ Set up repo:
     cd linter/lib
     git clone git@github.com:Xeus/newslint.git
 
+## Configure Settings
+
+Do a `cp vars_default.py vars.py` and edit it to set customization strings for your installation.  The settings affect `settings.py`.
+
 ## Start Server
 
 If you're running it locally, do this from the `app/` directory.

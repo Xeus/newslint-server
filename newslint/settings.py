@@ -7,7 +7,9 @@ EXTRA_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..')
 if EXTRA_DIR not in sys.path:
     sys.path.append(EXTRA_DIR)
 
-if vars.ENVIRONMENT == 'PRODUCTION':
+ENVIRONMENT = vars.ENVIRONMENT  # 'development', 'staging', 'production'
+
+if ENVIRONMENT in ['PRODUCTION', 'STAGING']:
     DEBUG = False
     TEMPLATE_DEBUG = False
 else:
@@ -20,16 +22,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if vars.ENVIRONMENT == "DEVELOPMENT":
+if ENVIRONMENT == "DEVELOPMENT":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'newslint.db',  # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '',  # Set to empty string for default.
         }
     }
 else:
@@ -111,7 +108,8 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '4g99*eho^g-q)7f#6la2@s037=ztwch9ph02i6tna9jn%8s=(6'
+# SECRET_KEY = '4g99*eho^g-q)7f#6la2@s037=ztwch9ph02i6tna9jn%8s=(6'
+SECRET_KEY = vars.SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -131,6 +129,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
@@ -152,12 +151,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'linter',
-    'djangobower'
+    'djangobower',
+    'debug_toolbar',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -168,12 +166,21 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 
-if vars.ENVIRONMENT == 'PRODUCTION':
+if ENVIRONMENT in ['PRODUCTION', 'STAGING']:
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
             'LOCATION': '127.0.0.1:11211',
-        }
+        },
+        'development': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        },
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        },
     }
 
 # TODO: log to where?

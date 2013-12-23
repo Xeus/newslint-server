@@ -2,6 +2,7 @@ Django==1.6.1
 werkzeug==0.9.4
 colorama==0.2.7
 django-bower==4.8.1
-celery[redis]==3.1.5
+celery[redis]==3.1.6
 coverage==3.7.1
 MySQL-python==1.2.4
+django-debug-toolbar==1.0
