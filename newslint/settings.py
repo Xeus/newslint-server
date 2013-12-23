@@ -1,4 +1,3 @@
-# Django settings for newslint project.
 import os
 import sys
 import vars
