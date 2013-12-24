@@ -6,7 +6,7 @@ EXTRA_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..')
 if EXTRA_DIR not in sys.path:
     sys.path.append(EXTRA_DIR)
 
-ENVIRONMENT = vars.ENVIRONMENT  # 'development', 'staging', 'production'
+ENVIRONMENT = vars.ENVIRONMENT
 
 if ENVIRONMENT in ['PRODUCTION', 'STAGING']:
     DEBUG = False

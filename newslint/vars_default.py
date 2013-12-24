@@ -1,4 +1,4 @@
-ENVIRONMENT = 'development'  # 'development', 'staging', 'production'
+'DEVELOPMENT'  # 'DEVELOPMENT', 'STAGING', 'TESTING', or 'PRODUCTION'
 DB_PATH = ''
 MYSQL_USER = ''
 MYSQL_PASS = ''

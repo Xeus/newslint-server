@@ -1,3 +1,5 @@
+""" Models for saving news clippings to the database. """
+
 from django.db import models
 from django.forms import ModelForm
 from django.utils import timezone
@@ -19,6 +21,9 @@ PUBLICATIONS = (
 
 
 class Clipping(models.Model):
+
+    """ Model for saving a news clipping -- sans scoring. """
+
     title = models.CharField(max_length=255, default='', blank=True)
     publication = models.CharField(max_length=255, choices=PUBLICATIONS, default='', blank=True)
     author = models.CharField(max_length=255, default='', blank=True)
@@ -32,6 +37,9 @@ class Clipping(models.Model):
 
 
 class ClippingForm(ModelForm):
+
+    """ A form for the Clipping model to test against in Django. """
+
     class Meta:
         model = Clipping
 
